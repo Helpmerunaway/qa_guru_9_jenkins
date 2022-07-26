@@ -1,14 +1,25 @@
-from selene import have, be
 import pytest
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
 from dotenv import load_dotenv
-
+from selene.support.shared import browser
 from utils import attach
 
 DEFAULT_BROWSER_VERSION = "100.0"
+
+
+@pytest.fixture(scope='function', autouse=True)
+def browser_managemento():
+    print('Starting browser')
+    browser.config.wait_for_no_overlap_found_by_js = True
+
+    browser.config.browser_name = 'chrome'
+    browser.config.hold_browser_open = False
+    browser.config.timeout = 3
+    browser.config.window_width = 1700
+    browser.config.window_height = 1200
 
 
 def pytest_addoption(parser):
@@ -46,7 +57,8 @@ def setup_browser(request):
         # command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
     )
-    browser = Browser(Config(driver))
+    # browser = Browser(Config(driver))
+    browser.config.driver = driver
 
     yield browser
     # даже если тест упадет закрепы будут в отсчете
@@ -57,16 +69,7 @@ def setup_browser(request):
     browser.quit()
 
 
-# @pytest.fixture(scope='function', autouse=True)
-# def browser_managemento():
-# 	print('Starting browser')
-# 	browser.config.wait_for_no_overlap_found_by_js = True
-#
-# 	browser.config.browser_name = 'chrome'
-# 	browser.config.hold_browser_open = False
-# 	browser.config.timeout = 3
-# 	browser.config.window_width = 1700
-# 	browser.config.window_height = 1200
+
 
 """
 @pytest.fixture()
