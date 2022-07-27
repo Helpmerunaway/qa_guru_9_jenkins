@@ -3,9 +3,8 @@ from tests.data.data import User
 from tests.demoqa_tests.application_manager import app
 import logging
 import allure
-from allure_commons.types import Severity, AttachmentType
+from allure_commons.types import Severity
 
-from utils import attach
 
 logging.getLogger('WDM').setLevel(logging.NOTSET)
 
@@ -25,7 +24,6 @@ def test_register_student_dev_patel(setup_browser):
 	student = User()
 	form = app.registration_form
 	results = app.results_modal.table
-
 	with allure.step("Open registrations form"):
 		browser.open("https://demoqa.com/automation-practice-form")
 		browser.element(".practice-form-wrapper").should(have.text("Student Registration Form"))
@@ -106,11 +104,6 @@ def test_register_student_dev_patel(setup_browser):
 			'Address', student.address))
 		results.check_cells_of_row(10).should(have.exact_texts(
 			'State and City', f'{student.state} {student.city}'))
-
-		# attach.add_html(browser)
-		# attach.add_screenshoot(browser)
-		# attach.add_logs(browser)
-		# attach.add_video(browser)
 
 	with allure.step("Закрываем окно"):
 		app.results_modal.close_modal_and_check_result()
