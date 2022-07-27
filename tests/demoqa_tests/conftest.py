@@ -9,7 +9,7 @@ from utils import attach
 DEFAULT_BROWSER_VERSION = "100.0"
 
 
-@pytest.fixture(scope='function', autouse=True)
+@pytest.fixture(scope='function')
 def browser_managemento():
     print('Starting browser')
     browser.config.wait_for_no_overlap_found_by_js = True
