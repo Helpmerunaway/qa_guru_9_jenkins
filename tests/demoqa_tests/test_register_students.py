@@ -26,6 +26,7 @@ def test_register_student_dev_patel(setup_browser):
 	results = app.results_modal.table
 	with allure.step("Open registrations form"):
 		browser.open("https://demoqa.com/automation-practice-form")
+		browser.driver.set_window_size(width=1700, height=1200)
 		browser.element(".practice-form-wrapper").should(have.text("Student Registration Form"))
 		browser.driver.execute_script("$('footer').remove()")
 		browser.driver.execute_script("$('#fixedban').remove()")
@@ -61,8 +62,8 @@ def test_register_student_dev_patel(setup_browser):
 			.add_hobbies(student.hobby_reading)\
 			.add_hobbies(student.hobby_music)
 
-	with allure.step("Загружаем изображение"):
-		form.browse_picture(student.picture)
+	# with allure.step("Загружаем изображение"):
+	# 	form.browse_picture(student.picture)
 
 	with allure.step("Указываем текущий адрес"):
 		form.set_address(student.address)
@@ -98,8 +99,8 @@ def test_register_student_dev_patel(setup_browser):
 		results.check_cells_of_row(7).should(have.exact_texts(
 			'Hobbies', f'{student.hobby_sports},'
 			           f' {student.hobby_reading}, {student.hobby_music}'))
-		results.check_cells_of_row(8).should(have.exact_texts(
-			'Picture', student.picture))
+		# results.check_cells_of_row(8).should(have.exact_texts(
+		# 	'Picture', student.picture))
 		results.check_cells_of_row(9).should(have.exact_texts(
 			'Address', student.address))
 		results.check_cells_of_row(10).should(have.exact_texts(
