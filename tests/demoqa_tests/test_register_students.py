@@ -62,8 +62,8 @@ def test_register_student_dev_patel(setup_browser):
 			.add_hobbies(student.hobby_reading)\
 			.add_hobbies(student.hobby_music)
 
-	# with allure.step("Загружаем изображение"):
-	# 	form.browse_picture(student.picture)
+	with allure.step("Загружаем изображение"):
+		form.browse_picture(student.picture)
 
 	with allure.step("Указываем текущий адрес"):
 		form.set_address(student.address)
