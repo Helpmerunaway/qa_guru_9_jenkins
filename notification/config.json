@@ -3,13 +3,13 @@
     "project": "MY_PROJECT",
     "environment": "PROD",
     "comment": "ticket id",
-    "reportLink": "https://jenkins.autotests.cloud/job/001_Helpmerunaway_hw_jenkins_10/14/",
+    "reportLink": "",
     "language": "en",
     "allureFolder": "allure-report/",
     "enableChart": true
   },
   "telegram": {
-    "token": "5455841570:AAGpwBRysos5FL4Uy7P65oifbLauAtXIeyo",
+    "token": "xxx:AAGpwBRysos5FL4Uy7P65oifbLauAtXIeyo",
     "chat": "-1001778915465",
     "replyTo": ""
   }
