@@ -1,0 +1,21 @@
+
+#API TOKEN BOT
+
+5455841570:AAGpwBRysos5FL4Uy7P65oifbLauAtXIeyo
+5455841570:AAGpwBRysos5FL4Uy7P65oifbLauAtXIeyo
+
+# номер чата QA_TEST_RESULT
+-1001778915465
+
+# как узнать номер чата? chat_id
+# добавить бота в чат и отправить сообщение, после чего послать запрос ниже
+
+https://api.telegram.org/bot5455841570:AAGpwBRysos5FL4Uy7P65oifbLauAtXIeyo/getUpdates
+
+
+https://api.telegram.org/bot5455841570:AAGpwBRysos5FL4Uy7P65oifbLauAtXIeyo
+
+# отправка сообщения курлом через бота
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001778915465", "text": "This is a test from qa.guru", "disable_notification": true}' https://api.telegram.org/bot5455841570:AAGpwBRysos5FL4Uy7P65oifbLauAtXIeyo/sendMessage
+
+java "-DconfigFile=notification/config.json" -jar notification/allure-notifications-4.2.1.jar
